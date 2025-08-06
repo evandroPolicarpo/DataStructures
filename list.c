@@ -1,6 +1,7 @@
 /*
-Evandro Policarpo 07D/07M/2025Y 13:00 UTC-3
-Implementation of a List Data Structure
+Author: Evandro Policarpo 
+Creation: 07D/07M/2025Y 13:00 UTC-3
+Description: Implementation of a List Data Structure
 Last Modify: 20D/07M/2025Y 10:43 UTC-3
 */
 #include <stdio.h>
