@@ -8,9 +8,8 @@ typedef struct Node {
 } Node;
 
 // Estrutura da pilha
-typedef struct Stack {
+typedef struct Stack{
     Node* top;
-    int size;
 } Stack;
 
 // Inicializa uma pilha vazia
@@ -20,7 +19,7 @@ void initStack(Stack* stack);
 int isEmpty(Stack* stack);
 
 // Retorna o tamanho da pilha
-int getSize(Stack* stack);
+//int getSize(Stack* stack);
 
 // Empilha um elemento
 void push(Stack* stack, int value);
@@ -32,9 +31,9 @@ int pop(Stack* stack);
 int peek(Stack* stack);
 
 // Libera todos os nós da pilha
-void clearStack(Stack* stack);
+//void clearStack(Stack* stack);
 
 // Imprime a pilha do topo até a base
-void printStack(Stack* stack);
+//void printStack(Stack* stack);
 
 #endif // STACK_H

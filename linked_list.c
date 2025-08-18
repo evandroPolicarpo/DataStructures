@@ -1,11 +1,12 @@
 /*
-Author: Evandro Policarpo 
+Author: Evandro Policarpo
 Creation: 20D/07M/2025Y 20:08 UTC-3
 Description: Implementation of a Linked List Data Structure
 Last Modify: 05D/08M/2025Y 23:50 UTC-3
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdarg.h>
 
 typedef struct Node{
@@ -29,9 +30,9 @@ void removeAtIndex(LinkedList* list, int index);
 Node* search(LinkedList* list, int value);							//Feito
 int contains(LinkedList* list, int value);							//Feito
 int getAtIndex(LinkedList* list, int index);						//Feito
-int isEmpty(const LinkedList* list);								//Feito
-int size(const LinkedList* list);									//Feito
-void printList(const LinkedList* list);								//Feito
+int isEmpty(LinkedList* list);										//Feito
+int size(LinkedList* list);											//Feito
+void printList(LinkedList* list);									//Feito
 void reverse(LinkedList* list);
 void clear(LinkedList* list);
 
@@ -49,7 +50,7 @@ void insertEnd(LinkedList *ls, int value){
 	newNode->data = value;
 	newNode->next = NULL;
 
-	if(ls->next == NULL){
+	if(ls->head->next == NULL){
 		ls->head = newNode;
 		return;
 	}
