@@ -7,7 +7,7 @@ Last Modify: 18D/08M/2025Y 21:30 UTC-3
 
 #include <stdlib.h>
 #include <limits.h>
-#include "stack.h"
+#include "Stack.h"
 
 // Estrutura de um nó da pilha
 typedef struct Node {
@@ -25,6 +25,7 @@ void initStack(Stack* stack);
 int isEmpty(Stack* stack);
 int peek(Stack* stack);
 int pop(Stack* stack);
+void printNodes(Node *node);
 void printStack(Stack* stack);
 void push(Stack* stack, int value);
 
