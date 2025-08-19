@@ -2,57 +2,76 @@
 Author: Evandro Policarpo
 Creation: 05D/08M/2025Y 22:00 UTC-3
 Description: Implementation of a Stack Data Structure
-Last Modify: 17D/08M/2025Y 20:46 UTC-3
+Last Modify: 18D/08M/2025Y 21:30 UTC-3
 */
 
 #include <stdlib.h>
 #include <limits.h>
 #include "stack.h"
 
+// Estrutura de um nó da pilha
 typedef struct Node {
     int data;
     struct Node* next;
 } Node;
 
-typedef struct Stack{
+// Estrutura da pilha
+typedef struct Stack {
     Node* top;
 } Stack;
 
-
+// Protótipos das funções
 void initStack(Stack* stack);
 int isEmpty(Stack* stack);
-void push(Stack* stack, int value);
-int pop(Stack* stack);
 int peek(Stack* stack);
-//void clearStack(Stack* stack);
-//void printStack(Stack* stack);
+int pop(Stack* stack);
+void printStack(Stack* stack);
+void push(Stack* stack, int value);
 
-void initStack(Stack *st){
-	st->top = NULL;
+// Inicializa a pilha (topo = NULL)
+void initStack(Stack *stack) {
+    stack->top = NULL;
 }
 
-int isEmpty(Stack *st){
-	return st->top == NULL;
+// Verifica se a pilha está vazia
+int isEmpty(Stack *stack) {
+    return stack->top == NULL;
 }
 
-void push(Stack *st, int n){
-	Node *new = malloc(sizeof(Node));
-	if(new == NULL) return;
-	new->data = n;
-	new->next = st->top;
-	st->top = new;
+// Retorna o valor no topo da pilha (sem remover)
+int peek(Stack *stack) {
+    if (isEmpty(stack)) return INT_MIN; // retorna menor int se vazia
+    return stack->top->data;
 }
 
-int pop(Stack *st){
-	if(isEmpty(st)) return 0; //!!
-	Node *temp = st->top;
-	int m = temp->data;
-	st->top = temp->next;
-	free(temp);
-	return m;
+// Remove e retorna o valor do topo da pilha
+int pop(Stack *stack) {
+    if (isEmpty(stack)) return INT_MIN; // erro: pilha vazia
+    Node *temp = stack->top;
+    int topValue = temp->data;
+    stack->top = temp->next;
+    free(temp);
+    return topValue;
 }
 
-int peek(Stack *st){
-    if(isEmpty(st)) return INT_MIN;
-    return st->top->data;
+// Função auxiliar que percorre os nós da pilha.
+void printNodes(Node *node){
+	if(node == NULL) return;
+	printNodes(node->next);
+	printf("%d \n", node->data);
+	// Só mostra os elementos depois de percorrer toda a pilha, ou seja: mostra do último(baixo) para cima.
+}
+
+// Mostra os elementos da pilha utilizando "printNodes" como auxiliar
+void printStack(Stack *stack) {
+	printNodes(stack->top);
+}
+
+// Insere um valor no topo da pilha
+void push(Stack *stack, int value) {
+    Node *newNode = malloc(sizeof(Node));
+    if (newNode == NULL) return; // erro de alocação
+    newNode->data = value;
+    newNode->next = stack->top;
+    stack->top = newNode;
 }
